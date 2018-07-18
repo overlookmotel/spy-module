@@ -13,6 +13,27 @@
 
 ## Usage
 
+A tiny module which exports a [sinon](https://www.npmjs.com/package/sinon) spy.
+
+Useful if you need to test some code which requires a module with `require()` and calls the function which the module exports.
+
+This module exports a spy function which returns `{returnProp: 123}`. The return value of the function is also recorded on the function as `.spyModuleReturnValue`.
+
+The spy also has a property `.isSpyModule` set to `true`.
+
+```js
+const spy = require('spy-module');
+console.log(spy.isSpyModule); // true
+console.log(spy.spyModuleReturnValue); // {returnProp: 123}
+
+const ret = spy.call( {ctxProp: 456}, 'arg' );
+console.log(ret); // {returnProp: 123}
+console.log(spy.called); // true
+console.log(spy.callCount); // 1
+console.log(spy.lastCall.thisValue); // {ctxProp: 456}
+console.log(spy.lastCall.args); // [ 'arg' ]
+```
+
 ## Tests
 
 Use `npm test` to run the tests. Use `npm run cover` to check coverage.
