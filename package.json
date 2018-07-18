@@ -1,6 +1,6 @@
 {
   "name": "spy-module",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Module that exports a sinon spy for testing calls to require()",
   "main": "./lib/",
   "author": {
